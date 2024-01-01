@@ -1,0 +1,18 @@
+@HospitalApi.DotNet8_HostAddress = https://localhost:7236
+
+GET {{HospitalApi.DotNet8_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{HospitalApi.DotNet8_HostAddress}}/api/hospital
+
+###
+
+GET {{HospitalApi.DotNet8_HostAddress}}/weatherforecast
+
+###
+
+GET {{HospitalApi.DotNet8_HostAddress}}/api/hospital
+
+###
