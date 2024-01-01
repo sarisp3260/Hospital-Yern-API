@@ -14,24 +14,28 @@ This Hospital API project is built with .NET Core 8 and Entity Framework Core. I
 
 Below is an example JSON object representing patient information:
 
+```
 {
     "id": 2,
     "name": "Pedro Pascal",
     "age": 44,
     "gender": "M",
-    "diagnosis": "Operación de riñon",
+    "diagnosis": "OperaciÃ³n de riÃ±on",
     "admissionDate": "2024-01-01T14:55:33.609",
     "createdAt": "2024-01-01T14:55:33.609",
     "deletedAt": null
 }
+```
 
 Here the diagram database:
 
-![Image Description](DB/diagrama.png)
+![Image Description](https://github.com/sarisp3260/Hospital-Yern-API/blob/main/DB/Diagrama.PNG?raw=true)
 
 ## Clone repository
 To clone this repository, use the following command:
 
+- Git bash
+  
 	```git
 	git clone https://github.com/sarisp3260/Hospital-Yern-API.git
 
@@ -45,8 +49,21 @@ To clone this repository, use the following command:
 1. Clone this repository.
 2. Open the project in your preferred editor (VS Code or Visual Studio).
 3. Set up the database connection string in `appsettings.json`.
-4. Run the following command in the terminal to apply database migrations:
+	
+	```
+ 	"ConnectionStrings": {
+	  "DefaultConnection": "Server=.\\SQLExpress; Database=YourDatabaseHere; Trusted_Connection=true; TrustServerCertificate=true;"
+	},
+ 	```
+
+5. Run the following command in the terminal to start database migrations:
 
    ```bash
-   dotnet ef database update
+   add-Migration Initial
+
+6. Then run the following command to apply and update migrations:
+   
+   ```bash
+   update-Database
+
 
