@@ -56,8 +56,14 @@ To clone this repository, use the following command:
 	},
  	```
 
-5. Run the following command in the terminal to apply database migrations:
+5. Run the following command in the terminal to start database migrations:
 
    ```bash
-   dotnet ef database update
+   add-Migration Initial
+
+6. Then run the following command to apply and update migrations:
+   
+   ```bash
+   update-Database
+
 
