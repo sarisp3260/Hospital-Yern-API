@@ -68,5 +68,8 @@ To clone this repository, use the following command:
 
 7. In the SQL Server Management Studio 19 Application run the DML command to insert the data:
 
-You can find it in the following folder
-=> BD/DML.sql
+	You can find it in the following folder
+	=> BD/DML.sql
+8. Run the code and enjoy
+
+## Thanks for watching
