@@ -25,10 +25,10 @@ namespace HospitalApi.DotNet8.Controllers
             return Ok(patients);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetPatient(int id)
+        [HttpGet("{PatientId}")]
+        public async Task<ActionResult> GetPatient(int PatientId)
         {
-            var patients = await _context.Patients.FindAsync(id);
+            var patients = await _context.Patients.FindAsync(PatientId);
             if (patients == null)
             {
                 return BadRequest("The patinet is not found.");
@@ -49,13 +49,13 @@ namespace HospitalApi.DotNet8.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdatePatient(Patient updatedPatient)
         {
-            var patientDB = await _context.Patients.FindAsync(updatedPatient.Id);
+            var patientDB = await _context.Patients.FindAsync(updatedPatient.PatientID);
             if (patientDB == null)
             {
                 return BadRequest("The user does not exist");
             }
 
-            patientDB.Name = updatedPatient.Name;
+            patientDB.PatientName = updatedPatient.PatientName;
             patientDB.Age = updatedPatient.Age;
             patientDB.Gender = updatedPatient.Gender;
             patientDB.Diagnosis = updatedPatient.Diagnosis;
@@ -69,9 +69,9 @@ namespace HospitalApi.DotNet8.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeletePatient(int id)
+        public async Task<ActionResult> DeletePatient(int PatientId)
         {
-           var patient = await _context.Patients.FindAsync(id);
+           var patient = await _context.Patients.FindAsync(PatientId);
             if (patient == null)
             {
                 return NotFound();

@@ -1,17 +1,17 @@
-USE YourDataBaseName;
+USE "hospital-yern";
 
-INSERT INTO Patients (PatientID, PatientName, Age, Gender, Diagnosis, AdmissionDate)
+INSERT INTO Patients (PatientName, Age, Gender, Diagnosis, AdmissionDate, CreatedAt)
 VALUES
-    (1, 'Alejandro Fernandez', 35, 'M', 'Fiebre', '2023-01-15'),
-    (2, 'Luisa Martínez', 28, 'F', 'Resfriado', '2023-02-20'),
-    (3, 'Pedro Ramirez', 45, 'M', 'Dolor de Cabeza', '2023-03-10'),
-    (4, 'María García', 50, 'F', 'Dolor de Espalda', '2023-04-05'),
-    (5, 'Carmen López', 22, 'F', 'Diabetes', '2023-05-12'),
-	(6, 'Mario Gomez', 18, 'M', 'Diabetes Tipo 3', '2023-07-12'),
-	(7, 'Sam Montolla', 27, 'F', 'Diabetes', '2023-05-12'),
-	(8, 'Pedro Holmes', 76, 'M', 'Diabetes Tipo 1', '2023-12-12'),
-	(9, 'Karen Ramirez', 24, 'F', 'Diabetes', '2023-04-12'),
-	(10, 'Lola Diaz', 45, 'F', 'Diabetes Tipo 3', '2023-11-12');
+    ('Alejandro Fernandez', 35, 'M', 'Fiebre', '2023-01-15', GETDATE()),
+    ('Luisa Martínez', 28, 'F', 'Resfriado', '2023-02-20', GETDATE()),
+    ('Pedro Ramirez', 45, 'M', 'Dolor de Cabeza', '2023-03-10', GETDATE()),
+    ('María García', 50, 'F', 'Dolor de Espalda', '2023-04-05', GETDATE()),
+    ('Carmen López', 22, 'F', 'Diabetes', '2023-05-12', GETDATE()),
+	('Mario Gomez', 18, 'M', 'Diabetes Tipo 3', '2023-07-12', GETDATE()),
+	('Sam Montolla', 27, 'F', 'Diabetes', '2023-05-12', GETDATE()),
+	('Pedro Holmes', 76, 'M', 'Diabetes Tipo 1', '2023-12-12', GETDATE()),
+	('Karen Ramirez', 24, 'F', 'Diabetes', '2023-04-12', GETDATE()),
+	('Lola Diaz', 45, 'F', 'Diabetes Tipo 3', '2023-11-12', GETDATE());
 
 INSERT INTO Doctors (DoctorID, DoctorName, Specialty)
 VALUES

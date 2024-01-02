@@ -10,17 +10,17 @@ CREATE TABLE Patients (
     Gender NVARCHAR(10) NOT NULL,
     Diagnosis NVARCHAR(100) NOT NULL,
     AdmissionDate DATE NOT NULL DEFAULT GETDATE(),
-    created_at DATETIME NOT NULL DEFAULT GETDATE(),
-    deleted_at DATETIME
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    DeletedAt DATETIME
 );
 
 -- Doctors Table
 CREATE TABLE Doctors (
     DoctorID INT PRIMARY KEY,
-    DoctorName NVARCHAR(50) NOT NULL UNIQUE,
+    DoctorName NVARCHAR(50) NOT NULL,
     Specialty NVARCHAR(50) NOT NULL,
-    created_at DATETIME NOT NULL DEFAULT GETDATE(),
-    deleted_at DATETIME
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    DeletedAt DATETIME
 );
 
 -- Appointments Table
@@ -29,8 +29,8 @@ CREATE TABLE Appointments (
     PatientID INT NOT NULL,
     DoctorID INT NOT NULL,
     AppointmentDate DATE NOT NULL DEFAULT GETDATE(),
-	created_at DATETIME NOT NULL DEFAULT GETDATE(),
-    deleted_at DATETIME
+	CreatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    DeletedAt DATETIME
     FOREIGN KEY (PatientID) REFERENCES Patients(PatientID),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID),
     CONSTRAINT PK_Appointments_Patient_Doctor UNIQUE (PatientID, DoctorID),

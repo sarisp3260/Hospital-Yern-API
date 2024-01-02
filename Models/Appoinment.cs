@@ -1,16 +1,34 @@
-﻿using System.Numerics;
+﻿using HospitalApi.DotNet8.Models;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace HospitalApi.DotNet8.Models
 {
+
     public class Appointment
     {
-        public int Id { get; set; }
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
-        public int DoctorId { get; set; }
-        public Doctor Doctor { get; set; }
-        public DateTime AppointmentDate { get; set; } 
-        public DateTime CreatedAt { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AppointmentID { get; set; }
+
+        [Required]
+        public int PatientID { get; set; }
+
+        [Required]
+        public int DoctorID { get; set; }
+
+        [Required]
+        public DateTime AppointmentDate { get; set; } = DateTime.Now;
+
+        [Required]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
         public DateTime? DeletedAt { get; set; }
+
+        [ForeignKey("PatientID")]
+        public Patient Patient { get; set; }
+
+        [ForeignKey("DoctorID")]
+        public Doctor Doctor { get; set; }
     }
 }

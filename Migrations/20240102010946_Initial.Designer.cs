@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospitalApi.DotNet8.Migrations
 {
     [DbContext(typeof(MedicalDbContext))]
-    [Migration("20240101143425_Initial")]
+    [Migration("20240102010946_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -27,11 +27,11 @@ namespace HospitalApi.DotNet8.Migrations
 
             modelBuilder.Entity("HospitalApi.DotNet8.Models.Appointment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AppointmentID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AppointmentID"));
 
                     b.Property<DateTime>("AppointmentDate")
                         .HasColumnType("datetime2");
@@ -42,28 +42,28 @@ namespace HospitalApi.DotNet8.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DoctorId")
+                    b.Property<int>("DoctorID")
                         .HasColumnType("int");
 
-                    b.Property<int>("PatientId")
+                    b.Property<int>("PatientID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("AppointmentID");
 
-                    b.HasIndex("DoctorId");
+                    b.HasIndex("DoctorID");
 
-                    b.HasIndex("PatientId");
+                    b.HasIndex("PatientID");
 
                     b.ToTable("Appointments");
                 });
 
             modelBuilder.Entity("HospitalApi.DotNet8.Models.Doctor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DoctorID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoctorID"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -71,26 +71,28 @@ namespace HospitalApi.DotNet8.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("DoctorName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Specialty")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("DoctorID");
 
                     b.ToTable("Doctors");
                 });
 
             modelBuilder.Entity("HospitalApi.DotNet8.Models.Patient", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("PatientID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientID"));
 
                     b.Property<DateTime>("AdmissionDate")
                         .HasColumnType("datetime2");
@@ -106,17 +108,20 @@ namespace HospitalApi.DotNet8.Migrations
 
                     b.Property<string>("Diagnosis")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("PatientName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("PatientID");
 
                     b.ToTable("Patients");
                 });
@@ -124,30 +129,20 @@ namespace HospitalApi.DotNet8.Migrations
             modelBuilder.Entity("HospitalApi.DotNet8.Models.Appointment", b =>
                 {
                     b.HasOne("HospitalApi.DotNet8.Models.Doctor", "Doctor")
-                        .WithMany("Appointments")
-                        .HasForeignKey("DoctorId")
+                        .WithMany()
+                        .HasForeignKey("DoctorID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HospitalApi.DotNet8.Models.Patient", "Patient")
-                        .WithMany("Appointments")
-                        .HasForeignKey("PatientId")
+                        .WithMany()
+                        .HasForeignKey("PatientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("HospitalApi.DotNet8.Models.Doctor", b =>
-                {
-                    b.Navigation("Appointments");
-                });
-
-            modelBuilder.Entity("HospitalApi.DotNet8.Models.Patient", b =>
-                {
-                    b.Navigation("Appointments");
                 });
 #pragma warning restore 612, 618
         }
