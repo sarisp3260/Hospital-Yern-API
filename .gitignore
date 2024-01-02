@@ -7,6 +7,7 @@ nupkg/
 
 # Ignore the Migrations folder
 .Migrations/
+Migrations/**
 
 # Visual Studio Code
 .vscode/
