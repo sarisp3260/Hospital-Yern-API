@@ -48,7 +48,7 @@ To clone this repository, use the following command:
 
 1. Clone this repository.
 2. Open the project in your preferred editor (VS Code or Visual Studio).
-3. Set up the database connection string in `appsettings.json`.
+3. Set up the database connection string in `appsettings.json`, just if you create other database
 	
 	```
  	"ConnectionStrings": {
@@ -66,4 +66,7 @@ To clone this repository, use the following command:
    ```bash
    update-Database
 
+7. In the SQL Server Management Studio 19 Application run the DML command to insert the data:
 
+You can find it in the following folder
+=> BD/DML.sql
