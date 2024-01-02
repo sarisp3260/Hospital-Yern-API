@@ -38,6 +38,7 @@ To clone this repository, use the following command:
   
 	```git
 	git clone https://github.com/sarisp3260/Hospital-Yern-API.git
+	```
 
 ### Requirements
 
@@ -60,11 +61,13 @@ To clone this repository, use the following command:
 
    ```bash
    add-Migration Initial
-
+   ```
+	
 6. Then run the following command to apply and update migrations:
    
    ```bash
    update-Database
+   ```
 
 7. In the SQL Server Management Studio 19 Application run the DML command to insert the data:
 
